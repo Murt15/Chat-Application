@@ -1,0 +1,50 @@
+.chat-app-div{
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chat-app-div h1{
+    text-align: center;
+}
+.chat-msg{
+    list-style: none;
+    height: auto;
+    background-color: rgb(244, 238, 230);
+    
+    margin: 10px;
+}
+.chat-msg-li{
+    margin: 5px;
+    
+}
+
+
+
+.msg-input-div{
+    text-align: center;
+    bottom: 0;
+    background-color: cornflowerblue;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    
+}
+.msg-input{
+    margin-top: 20px;
+    width: 600px;
+    height: 30px;
+}
+.send-btn{
+    width: 120px;
+    height: 36px;
+    font-size: 110%;
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color:coral;
+    margin-left: 25px;
+}
+body{
+    margin: 0;
+    background-image: url("https://neuronacreativa.com/cattleya/app-assets/images/backgrounds/chat-bg-2.png");
+}

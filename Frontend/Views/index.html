@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Style/index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0/axios.min.js" defer></script>
     <script src="../Js/index.js" defer></script>
 
     <title>Group Chat App</title>
 </head>
 <body>
-    <div class="chat-app" id="chatApp">
+    <div class="chat-app-div" id="chatApp">
             <h1>Chat App</h1>
-            <ul class="chat-msg">
-                <li>Hii</li>
-                <li>Hii</li>
+            <ul class="chat-msg" id="chat-msg">
+                <!-- <li class="chat-msg-li"></li> -->
+                
             </ul>
 
 
     </div>
 
-    <div class="msg-input">
+    <div class="msg-input-div">
         <input type="text" name="msg" id="msg-input" class="msg-input">
         <button  class="send-btn"  id="send-btn" type="submit">Send</button>
 

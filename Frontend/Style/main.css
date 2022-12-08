@@ -1,0 +1,37 @@
+h1{
+    margin-top: 120px;
+    text-align: center;
+}
+fieldset{
+    background-color: aliceblue;
+    width: 450px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    text-align: center;
+}
+.input{
+    width: 350px;
+    height: 20px;
+    margin: 8px;
+    
+}
+.btn{
+    margin-top: 15px;
+    width: 360px;
+    height: 35px;
+    background-color: rgb(77, 77, 227);
+    border: none;
+    border-radius: 5px;
+    font-size: 110%;
+}
+form{
+    margin: 20px;
+}
+form label{
+    font-size: 120%;
+}
+body{
+    background-image: url("https://cdn.dribbble.com/users/1003944/screenshots/15741863/06_comp_1_4x.gif?compress=1&resize=400x300&vertical=top");
+}

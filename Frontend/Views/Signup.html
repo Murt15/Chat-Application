@@ -5,24 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Style/main.css">
     <script src="../Js/signup.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0/axios.min.js" defer></script>
     <title>Group Chat App</title>
 </head>
 
 <body>
+    <h1>Sign Up</h1>
     <fieldset>
+        
         <form action="" onsubmit="signUp(event)">
             <label for="name">Name</label><br>
-            <input type="text" id="name" required><br>
+            <input type="text" id="name" class="input" required><br>
             <label for="email">Email</label><br>
-            <input type="email" id="email" required><br>
+            <input type="email" id="email" class="input" required><br>
             <label for="phoneNo">Phone Number</label><br>
-            <input type="tel" id="telno" required><br>
+            <input type="tel" id="telno" class="input" required><br>
             <label for="password">Password</label><br>
-            <input type="password" id="password" required><br>
+            <input type="password" id="password" class="input" required><br>
             <a href="../Views/Login.html">Already Registered? Click here to Login</a><br>
-            <button type="submit">Signup</button>
+            <button type="submit" class="btn">Signup</button>
         </form>
     </fieldset>
 
