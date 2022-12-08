@@ -16,6 +16,16 @@ async function login(event){
     try {
         let res=await axios.post(`${url}/user/login`,loginObj)
         console.log(res);
+        if (res.data.success==true){
+            window.localStorage.setItem('token',res.data.token)
+            window.alert('user login succeddfull');
+
+        }else if(res.data.password=="incorrect"){
+            window.alert("Password is Incorrect")
+
+        }else{
+            window.alert("User Not Registered")
+        }
     } catch (err) {
         console.log(err);
     } 
