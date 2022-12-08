@@ -18,7 +18,7 @@ async function login(event){
         console.log(res);
         if (res.data.success==true){
             window.localStorage.setItem('token',res.data.token)
-            window.alert('user login succeddfull');
+            window.location.href='../Views/index.html'
 
         }else if(res.data.password=="incorrect"){
             window.alert("Password is Incorrect")
