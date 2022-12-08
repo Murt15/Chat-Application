@@ -11,7 +11,10 @@ const userRoutes=require('./Routes/user');
 
 
 app.use(bodyParser.json({ extended: false }));
-app.use(cors());
+app.use(cors({
+    origin:'*',
+    credentials:true
+}));
 app.use('/user',userRoutes);
 
 sequelize
