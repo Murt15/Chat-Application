@@ -10,3 +10,12 @@ exports.addMsg=async(req,res)=>{
         console.log(err);
     }
 }
+
+exports.getAllMsgs=async(req,res)=>{
+    try {
+        const msgs=await Message.findAll();
+        res.json(msgs);
+    } catch (err) {
+        console.log(err);
+    }
+}

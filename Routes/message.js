@@ -8,5 +8,7 @@ const userAuthentication=require('../Middleware/authenticate');
 
 router.post('/message',userAuthentication.authenticate,msgController.addMsg)
 
+router.get('/allmessage',msgController.getAllMsgs)
+
 
 module.exports=router;
