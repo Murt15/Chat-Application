@@ -18,7 +18,7 @@ exports.addMsg=async(req,res)=>{
 exports.getAllMsgs=async(req,res)=>{
     try {
         const lastMsgId=req.query.id||-1;
-        console.log(lastMsgId);
+        //console.log(lastMsgId);
         const msgs=await Message.findAll( {include: {
             model: User,
             as: 'user',

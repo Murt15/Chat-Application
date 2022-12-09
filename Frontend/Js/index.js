@@ -55,7 +55,7 @@ async function allMsgs(){
     try {
         const oldMsgArray=JSON.parse(localStorage.getItem("msgs"));
 
-        const lastMsgId=oldMsgArray[oldMsgArray.length-1].id;
+        const lastMsgId=oldMsgArray[oldMsgArray.length-1].id ||-1;
 
         const res=await axios.get(`${url}/allmessage?id=${lastMsgId}`);
         //console.log(res.data);
@@ -80,11 +80,11 @@ async function showMsgOnScreen(name,msg){
     parentNode.innerHTML=parentNode.innerHTML+childHTML;
 }
 
-// setInterval(() => {
-//     getMsgs();
-// }, 3000);
+setInterval(() => {
+    allMsgs();
+}, 3000);
 
 document.getElementById("logout").onclick=()=>{
     window.location.href='../Views/Login.html';
-    localStorage.removeItem("token");
+    localStorage.clear();
 }
