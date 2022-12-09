@@ -31,5 +31,10 @@ async function signUp(event){
         console.log(err);
     }
 
+    document.getElementById("name").value=" ";
+    document.getElementById("email").value=" ";
+    document.getElementById("telno").value=" ";
+    document.getElementById("password").value="";
+
 
 }

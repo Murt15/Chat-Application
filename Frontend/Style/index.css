@@ -48,3 +48,18 @@ body{
     margin: 0;
     background-image: url("https://neuronacreativa.com/cattleya/app-assets/images/backgrounds/chat-bg-2.png");
 }
+
+.logout{
+    margin-right: 15px;
+    float: right;
+    border-radius: 15px;
+    border: none;
+  }
+  .logout:hover{
+    opacity: 0.5;
+  }
+  .logout img{
+    height: 40px;
+    width: 40px;
+    
+  }
