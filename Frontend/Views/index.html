@@ -13,15 +13,30 @@
 <button id="logout" class="logout"><img src="https://www.pngitem.com/pimgs/m/19-194832_oojs-ui-icon-logout-ltr-progressive-blue-logout.png"
     alt="Logout"></button>
 <body>
-   
+    <h1>Chat App</h1>
     <div class="chat-app-div" id="chatApp">
-            <h1>Chat App</h1>
-            <ul class="chat-msg" id="chat-msg">
-                <!-- <li class="chat-msg-li"></li> -->
+            
+            <ul class="chat-grps" id="chat-grp">
+                <button class="grp-btn" id="grpbtn">New Group</button>
                 
+                
+            </ul>
+            <ul class="chat-msg" id="chat-msg">
             </ul>
 
 
+    </div>
+    <div class="popup-container" id="container">
+        <div class="popup">
+            <button id="close" class="close-btn">&times;</button>
+            <form action="" onsubmit="createNewGroup(event)">
+                <label for="group-name" >Enter Group Name</label><br>
+                <input type="text" id="grpName"><br>
+                <div id="check-box" id="check-box"></div>
+                <button type="submit" class="newgroupbtn">Create</button>
+            </form>
+                            
+        </div>
     </div>
 
     <div class="msg-input-div">

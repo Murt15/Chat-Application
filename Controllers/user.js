@@ -65,3 +65,14 @@ exports.loginUser=async(req,res)=>{
         console.log(err);
     }
 }
+
+exports.getAlluser=async(req,res)=>{
+    try {
+        let users= await User.findAll();
+        res.json(users);    
+    } catch (err) {
+        console.log(err);
+    }
+    
+
+}
