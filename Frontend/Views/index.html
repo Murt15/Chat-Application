@@ -18,7 +18,10 @@
             
             <ul class="chat-grps" id="chat-grp">
                 <button class="grp-btn" id="grpbtn">New Group</button>
-                
+                <button class="grp-btn" id="join-grpbtn">Join Group</button>
+                <div class="grp-names" id="grp-name">
+
+                </div>
                 
             </ul>
             <ul class="chat-msg" id="chat-msg">
@@ -26,21 +29,21 @@
 
 
     </div>
-    <div class="popup-container" id="container">
+    <!-- <div class="popup-container" id="container">
         <div class="popup">
             <button id="close" class="close-btn">&times;</button>
-            <form action="" onsubmit="createNewGroup(event)">
-                <label for="group-name" >Enter Group Name</label><br>
-                <input type="text" id="grpName"><br>
-                <div id="check-box" id="check-box"></div>
-                <button type="submit" class="newgroupbtn">Create</button>
-            </form>
+            
                             
+        </div>
+    </div> -->
+    <div class="popup-container" id="container">
+        <div class="popup" id="popup-inner-div">
+            <button id="close" class="close-btn">&times;</button>
         </div>
     </div>
 
     <div class="msg-input-div">
-        <input type="text" name="msg" id="msg-input" class="msg-input">
+        <input type="text" name="msg" id="msg-input" class="msg-input" required>
         <button  class="send-btn"  id="send-btn" type="submit">Send</button>
 
     </div>
