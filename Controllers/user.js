@@ -1,6 +1,6 @@
-const User=require('../Models/User')
+const User = require('../Models/User')
 const bcrypt = require('bcrypt');
-const saltRounds=10;
+const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 
 
@@ -8,42 +8,43 @@ function generateAccessToken(id) {
     return jwt.sign({ userId: id }, process.env.SECRET)
 }
 
-exports.signUpUser=async(req,res)=>{
+exports.signUpUser = async (req, res) => {
     //console.log(req.body);
 
-    const name=req.body.name;
-    const email=req.body.email;
-    const phoneNo=req.body.phoneNo;
-    const password=req.body.password;
+    const name = req.body.name;
+    const email = req.body.email;
+    const phoneNo = req.body.phoneNo;
+    const password = req.body.password;
     try {
-        const find=await User.findAll({where:{emailId:email}})
-        if(find.length==0){
+        const find = await User.findAll({ where: { emailId: email } })
+        if (find.length == 0) {
             bcrypt.hash(password, saltRounds, async function (err, hash) {
-                await User.create({ name: name,phoneNo:phoneNo ,emailId: email, password: hash})
+                await User.create({ name: name, phoneNo: phoneNo, emailId: email, password: hash })
                 res.json({ alreadyexisting: false })
                 //console.log(err);
             });
-        }else{
+        } else {
             res.json({ alreadyexisting: true })
         }
-        
+
     } catch (err) {
         console.log(err);
+        res.status(409).json({ success: false, message: 'User already exists' });
     }
 
 }
 
-exports.loginUser=async(req,res)=>{
+exports.loginUser = async (req, res) => {
     //console.log(req.body);
 
-    const email=req.body.email;
-    const password=req.body.password;
+    const email = req.body.email;
+    const password = req.body.password;
 
     try {
 
         let user = await User.findAll({ where: { emailId: email } })
 
-        if(user.length!==0){
+        if (user.length !== 0) {
             bcrypt.compare(password, user[0].password, function (err, result) {
                 // result == true
                 if (result == true) {
@@ -54,7 +55,7 @@ exports.loginUser=async(req,res)=>{
                 //console.log(err);
             });
 
-        }else{
+        } else {
             res.json({ success: false });
         }
 
@@ -63,16 +64,17 @@ exports.loginUser=async(req,res)=>{
 
     } catch (err) {
         console.log(err);
+        res.status(404).json({ msg: 'Something went wrong' });
     }
 }
 
-exports.getAlluser=async(req,res)=>{
+exports.getAlluser = async (req, res) => {
     try {
-        let users= await User.findAll();
-        res.json(users);    
+        let users = await User.findAll();
+        res.json(users);
     } catch (err) {
         console.log(err);
     }
-    
+
 
 }

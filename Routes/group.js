@@ -1,23 +1,24 @@
-const express=require('express');
+const express = require('express');
 
-const router=express.Router();
+const router = express.Router();
 
-const groupController=require('../Controllers/group');
+const groupController = require('../Controllers/group');
 
-const userAuthentication=require('../Middleware/authenticate');
+const userAuthentication = require('../Middleware/authenticate');
 
-router.post('/createGroup',userAuthentication.authenticate,groupController.createGroup);
+router.post('/createGroup', userAuthentication.authenticate, groupController.createGroup);
 
-router.get('/allgroups',userAuthentication.authenticate,groupController.getAllGroups);
+router.get('/allgroups', userAuthentication.authenticate, groupController.getAllGroups);
 
-router.post('/joinGroup',userAuthentication.authenticate,groupController.joinGroup);
+router.post('/joinGroup', userAuthentication.authenticate, groupController.joinGroup);
 
-router.post('/admindetails',userAuthentication.authenticate,groupController.adminDetails);
+router.post('/admindetails', userAuthentication.authenticate, groupController.adminDetails);
 
-router.get('/allUsers',groupController.getAllUseroftheGrp);
+router.get('/allUsers', groupController.getAllUseroftheGrp);
 
-router.post('/makeAdmin',groupController.makeAdmin);
+router.post('/makeAdmin', groupController.makeAdmin);
 
-router.post('/removeUser',groupController.removeUser);
+router.post('/removeUser', groupController.removeUser);
 
-module.exports=router;
+
+module.exports = router;

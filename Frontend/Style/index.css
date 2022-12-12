@@ -13,11 +13,14 @@ h1{
     background-color: bisque;
 }
 .group-names{
-    margin: 20px;
+    margin: 30px;
     height: 40px;
     font-size: 120%;
-    display: flex;
     
+    
+}
+.btns{
+    margin-bottom: 70px;
 }
 
 
@@ -133,6 +136,19 @@ body{
     margin: 10px;
     align-self: center;
 }
-.group-names button{
+
+.admin-details-btn{
     float: right;
+    height: 30px;
+    background: none;
+    border: none;
+    width: 40px;
+}
+.invite-user-btn{
+    float: right;
+    height: 30px;
+    background: none;
+    border: none;
+    width: 40px;
+    
 }
