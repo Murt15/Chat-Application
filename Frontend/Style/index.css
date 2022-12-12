@@ -16,6 +16,8 @@ h1{
     margin: 20px;
     height: 40px;
     font-size: 120%;
+    display: flex;
+    
 }
 
 
@@ -130,4 +132,7 @@ body{
     background-color: goldenrod;
     margin: 10px;
     align-self: center;
+}
+.group-names button{
+    float: right;
 }

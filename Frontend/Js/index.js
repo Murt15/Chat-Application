@@ -21,6 +21,8 @@ window.addEventListener('DOMContentLoaded',async ()=>{
 
 //Event Listener and Function for sending a Message 
 document.getElementById("send-btn").onclick= async()=>{
+    // const file=document.getElementById("file-input").value
+    //  console.log(file);
     if(localStorage.getItem("gid")==null){
         window.alert("You have not selected the group");
     }else{
@@ -159,7 +161,7 @@ async function getMsgs(id)
 async function allGroups(){
     try {
         let res=await axios.get(`${url}/group/allgroups`,{headers:{'Authorization':token}});
-        console.log(res.data);
+        //console.log(res.data);
         for(let i=0;i<res.data.data.length;i++)
         {
            
@@ -188,32 +190,6 @@ document.getElementById("grpbtn").onclick=async()=>{
     {
         console.log(err);
     }
-
-
-
-//     try {
-//         let users=await axios.get(`${url}/user/allUsers`);
-//         let popupParentNode=`<div>`
-//         popupParentNode.innerHTML=" ";
-//         for (let i=0;i<users.data.length;i++){
-//             const childHTML=`<input type="checkbox" name=${users.data[i].name} class='cb' id=${users.data[i].id}>
-//             <label for="user">${users.data[i].name}</label><br>`
-//             popupParentNode+=childHTML;
-//         }
-//         popupParentNode+=`</div>`
-//         const form=`<form action="" onsubmit="createNewGroup(event)">
-//        <label for="group-name" >Enter Group Name</label><br>
-//        <input type="text" id="grpName"><br>
-//       ${popupParentNode}
-//        <button type="submit" class="newgroupbtn">Create</button>
-//    </form>`
-//         popupNotification("Group",form);
-//     } catch (err) {
-//         console.log(err);
-//     }
-
-
-
 
 }
 
@@ -263,24 +239,7 @@ async function joinGroup(event){
     console.log(res);
     showGrpOnScreen(res.data.group);
 }
-//Function for making admin
-async function makeAdmin(userId,groupId){
-    const obj={
-        userId:userId,
-        groupId:groupId
-    }
-    const res=await axios.post(`${url}/group/removeUser`,obj)
-    console.log(res)
-}
 
-async function removeUser(userId,groupId){
-    const obj={
-        userId:userId,
-        groupId:groupId
-    }
-    const res=await axios.post(`${url}/group/makeAdmin`,obj)
-    console.log(res);
-}
 //function for admin details
 async function adminDetails(id){
     const obj={id:id}
@@ -289,11 +248,16 @@ async function adminDetails(id){
         const res=await axios.post(`${url}/group/admindetails`,obj,{headers:{'Authorization':token}});
        //console.log(res.data[0].isAdmin);
        if(res.data[0].isAdmin==true){
+        let ul=`<ul>`;
+    
         let users=await axios.get(`${url}/group/allUsers`,{headers:{'Authorization':gid}});
         console.log(users.data);
         for(let i=0;i<users.data.length;i++){
             const childHTML=`<li>${users.data[i].name} <button onclick="makeAdmin(${users.data[i].id},${gid})">Make Admin</button> <button onclick="removeUser(${users.data[i].id},${gid})">Remove User</button></li>`
+            ul+=childHTML;
         }
+        ul+=`</ul>`
+        popupNotification('User',ul);
        }else{
         window.alert("You are not an admin of this group");
        }
@@ -301,7 +265,32 @@ async function adminDetails(id){
         console.log(err);
     }
 }
+//Function for making admin
+async function makeAdmin(userId,groupId){
+    const obj={
+        userId:userId,
+        groupId:groupId
+    }
+    const res=await axios.post(`${url}/group/makeAdmin`,obj)
+    //console.log(res);
+    if(res.data.success==true){
+        window.alert("User has been made admin")
+    }
+    
+}
 
+//Function for removing user from a group
+async function removeUser(userId,groupId){
+    const obj={
+        userId:userId,
+        groupId:groupId
+    }
+    const res=await axios.post(`${url}/group/removeUser`,obj)
+    //console.log(res)
+    if(res.data.success==true){
+        window.alert("User has been removed from the group");
+    }
+}
 
 //Function for showing Msg and Grps on screen 
 
@@ -364,38 +353,3 @@ function popupNotification(title, htmlElement, text) {
 
 }
 
-// const open = document.getElementById("grpbtn");
-// const close = document.getElementById("close");
-// const container = document.getElementById("container");
-
-// open.addEventListener("click", () => {
-//     container.classList.add("active");
-// });
-
-// close.addEventListener("click", () => {
-//     container.classList.remove("active");
-// });
-
-async function rough(){
-    const checkBox=document.getElementsByClassName('cb');
-    const name=document.getElementById("grpName").value;
-    const userArray=[];
-    for (var check of checkBox) {  
-        if (check.checked)  
-          userArray.push(check.id)  
-      }
-      //console.log(userArray);
-      const obj={
-        name:name,
-        id:userArray
-      }
-      const res= await axios.post(`${url}/group/createGroup`,obj);
-      console.log(res);
-      if(res.data.success==true){
-        window.alert('Group Created Succesfully');
-      }
-
-
-
-      //console.log(res)  
-}

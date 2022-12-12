@@ -103,17 +103,18 @@ exports.makeAdmin=async(req,res)=>{
     const userId=req.body.userId;
     const groupId=req.body.groupId;
 
-    const user=userGroup.findOne({where:{userId:userId,groupId:groupId}})
-    user.update({isAdmin:true});
+    const user=await userGroup.findOne({where:{userId:userId,groupId:groupId}})
+    await user.update({isAdmin:true});
     console.log("Done")
+    res.status(202).json({success:true})
 }
 
 exports.removeUser=async(req,res)=>{
     const userId=req.body.userId;
     const groupId=req.body.groupId;
-    const user=userGroup.findOne({where:{userId:userId,groupId:groupId}})
+    const user=await userGroup.findOne({where:{userId:userId,groupId:groupId}})
 
     const response=user.destroy();
     console.log("Deleted");
-    
+    res.status(202).json({success:true})
 }
