@@ -4,9 +4,9 @@ const { Op } = require('sequelize');
 const AWS = require('aws-sdk');
 
 async function uploadToS3(data, filename) {
-    const BUCKET_NAME = 'webchatapplication';
-    const IAM_USER_KEY = 'AKIAX2RUSYM3JI4KM3FS';
-    const IAM_USER_SECRET = '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';
+    const BUCKET_NAME = process.env.BUCKET_NAME;
+    const IAM_USER_KEY = process.env.IAM_USER_KEY;
+    const IAM_USER_SECRET = process.env.IAM_USER_SECRET;
 
 
     let s3bucket = new AWS.S3({
