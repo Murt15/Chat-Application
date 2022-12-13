@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./Utils/database');
+const path=require('path');
 
 
 //Initializing Express 
@@ -34,7 +35,9 @@ app.use(cors({
 app.use('/user', userRoutes);
 app.use(msgRoutes);
 app.use('/group', grpRoutes);
-
+app.use((req,res)=>{
+    res.sendFile(path.join(__dirname,`Frontend/${req.url}`))
+})
 
 //Relations
 //One to Many

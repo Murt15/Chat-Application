@@ -6,16 +6,18 @@ const gparentNode = document.getElementById("grp-name");
 
 const token = localStorage.getItem('token');
 
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('DOMContentLoaded', () => {
+    localStorage.removeItem("gid");
     allGroups();
+    
 })
 
-if(localStorage.getItem("gid")){
-    setInterval(() => {
-        const id=localStorage.getItem("gid");
-        allMsgs(id);
-    }, 2000);
-}
+// if(localStorage.getItem("gid")){
+//     setInterval(() => {
+//         const id=localStorage.getItem("gid");
+//         allMsgs(id);
+//     }, 3000);
+// }
 
 
 
@@ -85,7 +87,7 @@ async function allMsgs(id) {
 
         //const lastMsgId=-1;
         const res = await axios.get(`${url}/allmessage?id=${lastMsgId}`, { headers: { 'Authorization': id } });
-        //console.log(res.data);
+        console.log(res.data);
 
         const allMsgs = oldMsgArray.concat(res.data);
         //console.log(allMsgs);
@@ -110,7 +112,7 @@ async function getMsgs(id) {
     parentNode.innerHTML = " ";
 
     const msgArray = JSON.parse(localStorage.getItem("msgs"));
-    if (!msgArray) {
+    if (!msgArray || msgArray.length<10) {
         try {
             const res = await axios.get(`${url}/allmessage`, { headers: { 'Authorization': id } });
 
@@ -122,15 +124,15 @@ async function getMsgs(id) {
 
             localStorage.setItem("msgs", messages);
 
-            for (let i = 0; i < res.data.length; i++) {
-                showMsgOnScreen(res.data[i].user.name, res.data[i].message);
+            for (let i = 0; i < response.length; i++) {
+                showMsgOnScreen(response[i].user.name, response[i].message);
             }
         }
         catch (err) {
             console.log(err);
         }
     }
-    else {
+    else  {
         for (let i = 0; i < msgArray.length; i++) {
             showMsgOnScreen(msgArray[i].user.name, msgArray[i].message)
         }
@@ -304,6 +306,8 @@ document.getElementById("logout").onclick = () => {
     window.location.href = '../Views/Login.html';
     localStorage.clear();
 }
+
+
 ///////////////////////////////////////////Pop Notification////////////////////////////////////////////////////////////////////
 const close = document.getElementById('close');
 const popupContainer = document.getElementById('container');
