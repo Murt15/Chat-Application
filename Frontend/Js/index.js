@@ -12,12 +12,12 @@ window.addEventListener('DOMContentLoaded', () => {
     
 })
 
-// if(localStorage.getItem("gid")){
-//     setInterval(() => {
-//         const id=localStorage.getItem("gid");
-//         allMsgs(id);
-//     }, 3000);
-// }
+if(localStorage.getItem("gid")){
+    setInterval(() => {
+        const id=localStorage.getItem("gid");
+        allMsgs(id);
+    }, 3000);
+}
 
 
 
@@ -217,7 +217,10 @@ async function joinGroup(event) {
     }
     const res = await axios.post(`${url}/group/joinGroup`, obj, { headers: { 'Authorization': token } });
     console.log(res);
+    
     showGrpOnScreen(res.data.group);
+
+    closePopup();
 }
 
 //function for admin details
